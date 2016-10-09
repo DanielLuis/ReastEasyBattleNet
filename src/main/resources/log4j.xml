@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration status="warn" name="ReastEasyBattleNet" packages="">
+
+	<Properties>
+		<Property name="logpath">$${sys:jboss.server.log.dir}</Property>
+	</Properties>
+
+	<Appenders>
+		<RollingFile name="RollingFile" fileName="${logpath}/gatewaysisser.log"
+			filePattern="${logpath}/logs/$${date:yyyy-MM}/battlenet-%d{MM-dd-yyyy}-%i.log.gz">
+			<PatternLayout>
+				<Pattern>%d{HH:mm:ss.SSS} [%t] %-5level %logger{36} - %msg%n
+				</Pattern>
+			</PatternLayout>
+			<SizeBasedTriggeringPolicy size="10 MB" />
+			<DefaultRolloverStrategy max="20" />
+		</RollingFile>
+		<!-- <Console name="STDOUT" target="SYSTEM_OUT">
+	      <PatternLayout pattern="%m%n" />
+	    </Console>-->
+	</Appenders>
+	<Loggers>
+		<Root level="info">
+			<!-- <AppenderRef ref="STDOUT" /> -->
+			<AppenderRef ref="RollingFile" />
+		</Root>
+	</Loggers>
+</Configuration>
